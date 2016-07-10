@@ -1,11 +1,17 @@
 language: elixir
 elixir:
-  - 1.3
+- 1.3
 otp_release:
-  - 18.2.1
+- 18.2.1
 sudo: false
 addons:
-  postgresql: '9.4' # Use postgres 9.4 because Travis does not support 9.5 yet apparently
+  postgresql: '9.4'
 before_script:
-  # Create the test database
-  - psql -c 'create database peepchat_test;' -U postgres
+- psql -c 'create database peepchat_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: IxWazL0F4utHNZwi2DdqvIQ3MK6rHr6+j41nc9KSluh+KqImVoKiG0qLak5C6lOl5TiLYAmQTTJmyc9ni1SoSTZjgnjjLq7qm3AWEW1I6w/xFewL04zXHTDi0UT4U9KdaeOQBSfReZkjz+Jvufv9yHBoq0v6ODk8h9FIXMtDRCOU1zPky0p1hK07xiXZbA0apc3rOh/yV7GLOzdisf7zb0uSx039e8p9al0ORFbXccV6/9C9W7EWiq/or9YgwGQ8bSdR3ka1oKHcCUfalkaWpOXBmb9m6N/Zpi6q3swBufv+Rk7NrZLPg4nGHNL9mcg1HfB+AMwXV7zwRGN8AH4JF9LJfv3/j9DBijHn3s0Vqxm3StM7LCnFuk/xWbN4j/TNwKIo+bQCIVGolGc5Wmyd3Yz48tFmODdTBXlQGHzQdZ4SRmHDAVlMvhWn6HoH4v82xkYfN8nSnFS80tswEw8NmfmAE8nCjDgSul6jP3MyUyqZjYejwtip/ekD5fO5rsY9ggeCW7djkSrGKtRZmmj/fIFPJgLSM6pYSmN9o5mZ2CrYk01bPT3K0Jqi9GU1yQQr8+cYi5FL8vi9rG1rNtaN7wIplHqhMa1RevPZ3OP9RYhk58PxRMIrqlThPo6xIViJPopjmhXCAWMriwJEluc0hEYjj+PYHqGMZwSAj5VJNJY=
+  app: tranquil-cove-93706
+  on:
+    repo: eturino/peepchat-api
